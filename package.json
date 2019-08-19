@@ -8,10 +8,11 @@
  "license": "MIT",
  "private": true,
  "scripts": {
-	 "server": "nodemon index.js",
-	 "build-sass": "node-sass sass/styles.scss public/css/styles.css",
-	 "watch:sass": "nodemon -e scss -x \"npm run build-sass\"",
-	 "dev": "npm run server | npm run watch:sass"
+  "server": "nodemon index.js",
+  "build:sass": "node-sass sass/styles.scss public/css/styles.css",
+  "build:postcss": "postcss --use autoprefixer -b 'last 2 versions' <  public/css/styles.css | postcss --use cssnano > public/css/styles.min.css",
+  "watch:sass": "nodemon -e scss -x 'npm run build:sass && npm run build:postcss'",
+  "dev": "npm run server | npm run watch:sass"
  },
  "dependencies": {
   "bcryptjs": "^2.4.3",
@@ -27,6 +28,10 @@
   "pug": "^2.0.4"
  },
  "devDependencies": {
-  "node-sass": "^4.12.0"
+  "autoprefixer": "^9.6.1",
+  "cssnano": "^4.1.10",
+  "node-sass": "^4.12.0",
+  "postcss": "^7.0.17",
+  "postcss-cli": "^6.1.3"
  }
 }
