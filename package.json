@@ -8,10 +8,10 @@
  "license": "MIT",
  "private": true,
  "scripts": {
-  "server": "nodemon index.js",
-  "folders": "mkdir --p public/css views/templates models routes",
-  "sass": "mkdir -p sass sass/config sass/components sass/layouts sass/utils && touch sass/styles.scss public/css/styles.css && node-sass --watch sass/styles.scss public/css/styles.css",
-  "clean": "rm --r sass"
+	 "server": "nodemon index.js",
+	 "build-sass": "node-sass sass/styles.scss public/css/styles.css",
+	 "watch:sass": "nodemon -e scss -x \"npm run build-sass\"",
+	 "dev": "npm run server | npm run watch:sass"
  },
  "dependencies": {
   "bcryptjs": "^2.4.3",
